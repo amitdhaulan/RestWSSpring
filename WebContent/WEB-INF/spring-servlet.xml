@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+	<!-- xmlns:mvc="http://www.springframework.org/schema/mvc"Z -->
+
+
+	<!-- <mvc:annotation-driven></mvc:annotation-driven> -->
+
+	<context:component-scan base-package="org.test.springmvc" />
+	<!-- <mvc:annotation-driven /> -->
+
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="mediaTypes">
+			<map>
+				<entry key="html" value="text/html"></entry>
+				<entry key="json" value="application/json"></entry>
+				<entry key="xml" value="application/xml"></entry>
+			</map>
+		</property>
+		<property name="viewResolvers">
+			<list>
+				<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+					<property name="viewClass"
+						value="org.springframework.web.servlet.view.JstlView">
+					</property>
+					<property name="prefix" value="/WEB-INF/view/jsp/"></property>
+					<property name="suffix" value=".jsp"></property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+</beans>
